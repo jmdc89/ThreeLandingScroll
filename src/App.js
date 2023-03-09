@@ -1,9 +1,13 @@
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <>
+      <ambientLight intensity={0.1} />
+      <mesh>
+        <boxGeometry />
+        <meshStandardMaterial />
+      </mesh>
+    </>
   );
 }
 
