@@ -1,4 +1,5 @@
-import { ScrollControls, Scroll } from "@react-three/drei";
+import { ScrollControls, Scroll, Environment } from "@react-three/drei";
+import { Robot } from "./components/Robot";
 
 
 function App() {
@@ -6,11 +7,15 @@ function App() {
   return (
     <>
       <color attach="background" args={["#333333"]} />
-
+      <ambientLight intensity={0.2} />
+      <spotLight position={[0, 25, 0]} angle={1.3} penumbra={1} castShadow intensity={2} shadow-bias={-0.0001} />
+      <Environment
+        preset='warehouse'
+      />
       <ScrollControls pages={6} damping={0.1}>
 
         <Scroll>
-
+          <Robot />
         </Scroll>
 
         <Scroll html style={{ width: '100%' }}>
