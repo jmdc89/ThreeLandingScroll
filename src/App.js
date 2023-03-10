@@ -14,8 +14,9 @@ function App() {
       />
       <ScrollControls pages={6} damping={0.1}>
 
+        <Robot />
+
         <Scroll>
-          <Robot />
         </Scroll>
 
         <Scroll html style={{ width: '100%' }}>
