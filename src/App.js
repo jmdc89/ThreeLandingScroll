@@ -8,6 +8,8 @@ function App() {
 
   useFrame((state,delta) => {
       //console.log(test)
+
+      test.current.rotation.y += delta
   })
 
   return (
