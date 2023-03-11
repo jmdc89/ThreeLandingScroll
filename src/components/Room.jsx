@@ -1,10 +1,48 @@
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useLayoutEffect, useRef } from 'react'
+import { useGLTF, useScroll } from '@react-three/drei'
+import gsap from 'gsap'
+import { useFrame } from '@react-three/fiber';
 
 export function Room(props) {
   const { nodes, materials } = useGLTF('./models/isoroom/isoroom-transformed.glb')
+  const room = useRef();
+  const scroll = useScroll();
+  const tl = useRef();
+
+  useFrame((state, delta)=>{
+    tl.current.seek(scroll.offset * tl.current.duration())
+  })
+
+  useLayoutEffect(()=> {
+    tl.current = gsap.timeline({defaults: {duration: 2, ease: 'power1.inOut'}})
+
+    tl.current
+    // .to(room.current.rotation, {y: 0}, 2)
+    // .to(room.current.position, {x: 1}, 2)
+
+    // .to(room.current.rotation, {y: 1}, 6)   
+    .to(room.current.position, {y: -2}, 6)
+
+    // .to(room.current.rotation, {y: 0}, 11)
+    // .to(room.current.rotation, {x: 1}, 11)
+    // .to(room.current.position, {x: 0}, 11)
+
+    // .to(room.current.rotation, {y: 0}, 13)
+    .to(room.current.rotation, {y: -1}, 13)    
+    // .to(room.current.position, {x: 0}, 13)
+
+    // .to(room.current.rotation, {y: 0}, 16)   
+    // .to(room.current.rotation, {x: 0}, 16) 
+    // .to(room.current.position, {x: 0}, 16)  
+
+    .to(room.current.rotation, {y: 0}, 20)   
+    .to(room.current.rotation, {x: 0}, 20) 
+    .to(room.current.position, {x: 0}, 20) 
+    
+  },[])
+
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} ref={room}>
       <mesh geometry={nodes.bed_lowpoly_equipment_material_0.geometry} material={materials.equipment_material} position={[-199, 100, 90]} rotation={[-Math.PI / 2, 0, 0]} scale={100} />
       <mesh geometry={nodes.mattress_lowpoly_equipment_material_0.geometry} material={materials.equipment_material} position={[-199, 100, 90]} rotation={[-Math.PI / 2, 0, 0]} scale={100} />
       <mesh geometry={nodes.desk_lowpoly_equipment_material_0.geometry} material={materials.equipment_material} position={[200, -20, -250]} rotation={[-Math.PI / 2, 0, 0]} scale={100} />

@@ -22,7 +22,7 @@ function App() {
 
         <Scroll html style={{ width: '100%' }}>
 
-          <h1 className='title' style={{ color: '#cdcbca', position: 'absolute', top: `65vh`, left: '50%', fontSize: '13em', transform: `translate(-50%,-50%)` }}>PHANTOM</h1>
+          <h1 className='title' style={{ color: '#cdcbca', position: 'absolute', top: `65vh`, left: '50%', fontSize: '13em', transform: `translate(-50%,-50%)` }}>ROOM</h1>
 
           <div className='row' style={{ position: 'absolute', top: `132vh` }}>
             <h2>Be a Man of the Future.</h2>
