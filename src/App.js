@@ -1,4 +1,4 @@
-import { ScrollControls, Scroll, Environment } from "@react-three/drei";
+import { ScrollControls, Scroll, Environment, Sparkles } from "@react-three/drei";
 import { Robot } from "./components/Robot";
 import { Room } from "./components/Room";
 
@@ -16,6 +16,7 @@ function App() {
 
         {/* <Robot scale={0.8}/> */}
         <Room scale={0.007}/>
+        <Sparkles size={2} color={"#fff"} scale={[10,10,10]}></Sparkles>
 
         <Scroll>
         </Scroll>
