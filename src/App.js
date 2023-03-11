@@ -1,6 +1,6 @@
 import { ScrollControls, Scroll, Environment } from "@react-three/drei";
 import { Robot } from "./components/Robot";
-
+import { Room } from "./components/Room";
 
 function App() {
 
@@ -14,7 +14,8 @@ function App() {
       />
       <ScrollControls pages={6} damping={0.1}>
 
-        <Robot scale={0.8}/>
+        {/* <Robot scale={0.8}/> */}
+        <Room scale={0.007}/>
 
         <Scroll>
         </Scroll>
