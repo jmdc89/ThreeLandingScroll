@@ -14,7 +14,7 @@ function App() {
       />
       <ScrollControls pages={6} damping={0.1}>
 
-        <Robot />
+        <Robot scale={0.8}/>
 
         <Scroll>
         </Scroll>
