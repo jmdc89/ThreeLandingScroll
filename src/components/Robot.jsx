@@ -1,10 +1,20 @@
 import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import { useGLTF, useScroll } from '@react-three/drei'
+import gsap from 'gsap'
 
 export function Robot(props) {
-  const { nodes, materials } = useGLTF('./models/robot/phantoms-transformed.glb')
+  const { nodes, materials } = useGLTF('./models/robot/phantoms-transformed.glb');
+
+  const robot = useRef();
+
+  const scroll = useScroll();
+
+  const tl = useRef();
+
+
+
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} ref={robot}>
        <group position={[-0.21, 0.16, 0.37]} rotation={[0, -0.15, 0]} scale={0.15}>
         <mesh geometry={nodes.Cube003.geometry} material={materials.Metal}>
         <meshPhysicalMaterial 
