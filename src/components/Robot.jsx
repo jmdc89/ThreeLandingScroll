@@ -1,16 +1,22 @@
-import React, { useRef } from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import { useGLTF, useScroll } from '@react-three/drei'
 import gsap from 'gsap'
+import { useFrame } from '@react-three/fiber';
 
 export function Robot(props) {
   const { nodes, materials } = useGLTF('./models/robot/phantoms-transformed.glb');
-
   const robot = useRef();
-
   const scroll = useScroll();
-
   const tl = useRef();
 
+  useFrame((state, delta)=>{
+    tl.current.seek(scroll.offset * tl.current.duration())
+  })
+
+  useLayoutEffect(()=> {
+    tl.current = gsap.timeline({defaults: {duration: 2, ease: 'power1.inOut'}})
+    
+  },[])
 
 
   return (
